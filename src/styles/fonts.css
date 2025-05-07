@@ -1,0 +1,4 @@
+@theme inline {
+  --font-roboto: var(--font-roboto);
+  --font-poppins: var(--font-poppins);
+}
