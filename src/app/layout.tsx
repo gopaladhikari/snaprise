@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { cn } from "@/lib/utils";
 import { poppins, roboto } from "@/config/fonts";
 import { siteConfig } from "@/constants/siteConfig";
+import { Header } from "@/components/partials/header";
+import { Footer } from "@/components/partials/footer";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
@@ -31,8 +33,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(poppins.variable, roboto.variable)}>
+      <body
+        className={cn(poppins.variable, roboto.variable)}
+        suppressHydrationWarning
+      >
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

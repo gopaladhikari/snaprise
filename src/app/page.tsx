@@ -2,38 +2,37 @@ import Link from "next/link";
 import Image from "next/image";
 import { Camera, CheckCircle, Search, Star, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Header } from "@/components/partials/header";
-import { Footer } from "@/components/partials/footer";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
       <main className="flex-1">
         <section className="relative">
-          <div className="from-primary/20 to-background/20 absolute inset-0 z-10 bg-gradient-to-r" />
-          <div className="relative h-[600px] w-full">
+          <div className="bg-black" />
+          <div className="relative h-[610px] w-full">
             <Image
-              src="/placeholder.svg?height=600&width=1920"
+              src="/hero-image.jpg"
               alt="Professional service showcase"
               fill
               className="object-cover"
               priority
             />
+            {/* Dark overlay */}
+            <div className="pointer-events-none absolute inset-0 z-10 bg-black/60" />
           </div>
           <div className="absolute inset-0 z-20 flex items-center">
             <div className="container">
               <div className="max-w-2xl space-y-6">
-                <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+                <h1 className="text-white">
                   Showcase Your Professional Work
                 </h1>
-                <p className="text-muted-foreground text-lg md:text-xl">
+                <p className="text-muted text-lg">
                   Connect with clients through stunning visual portfolios.
                   Perfect for contractors, cleaners, landscapers, and more.
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Button size="lg" asChild>
-                    <Link href="/auth/register">Get Started</Link>
+                    <Link href="/register">Get Started</Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <Link href="/gallery">Browse Gallery</Link>
@@ -335,7 +334,7 @@ export default function Home() {
                   </p>
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <Button size="lg" variant="secondary" asChild>
-                      <Link href="/auth/register">Get Started</Link>
+                      <Link href="/register">Get Started</Link>
                     </Button>
                     <Button
                       size="lg"
@@ -362,7 +361,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

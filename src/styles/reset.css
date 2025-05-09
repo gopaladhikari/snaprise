@@ -1,5 +1,6 @@
 html {
   @apply scroll-smooth scheme-light-dark;
+  scrollbar-width: thin;
 }
 
 figure,
@@ -13,21 +14,4 @@ input,
 textarea,
 select {
   font: inherit;
-}
-
-/* Descrese scrollbar width */
-::-webkit-scrollbar {
-  width: thin;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply rounded bg-gray-400;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
 }

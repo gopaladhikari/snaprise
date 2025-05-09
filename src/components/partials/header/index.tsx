@@ -238,7 +238,7 @@ export function Header({ isAuthenticated = false, user }: HeaderProps) {
               <div className="flex flex-col space-y-2">
                 <Button variant="outline" asChild className="w-full">
                   <Link
-                    href="/auth/login"
+                    href="/login"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Login
@@ -246,7 +246,7 @@ export function Header({ isAuthenticated = false, user }: HeaderProps) {
                 </Button>
                 <Button asChild className="w-full">
                   <Link
-                    href="/auth/register"
+                    href="/register"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Register

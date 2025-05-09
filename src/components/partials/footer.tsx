@@ -1,11 +1,9 @@
 import Link from "next/link";
-import {
-  Camera,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { Camera } from "lucide-react";
+import { Facebook } from "./icons/facebook";
+import { Instagram } from "./icons/instagram";
+import { Twitter } from "./icons/twitter";
+import { Linkedin } from "./icons/linkedin";
 
 export function Footer() {
   return (
