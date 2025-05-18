@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { Camera, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Avatar,
@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Logo } from "../logo";
 
 interface HeaderProps {
   isAuthenticated?: boolean;
@@ -28,7 +29,10 @@ interface HeaderProps {
   };
 }
 
-export function Header({ isAuthenticated = false, user }: HeaderProps) {
+export function Header({
+  isAuthenticated = false,
+  user,
+}: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -41,10 +45,7 @@ export function Header({ isAuthenticated = false, user }: HeaderProps) {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
-            <Camera className="text-primary h-6 w-6" />
-            <span className="hidden font-bold sm:inline-block">
-              SnapRise
-            </span>
+            <Logo />
           </Link>
         </div>
 
@@ -53,7 +54,9 @@ export function Header({ isAuthenticated = false, user }: HeaderProps) {
           <Link
             href="/"
             className={`hover:text-primary text-sm font-medium transition-colors ${
-              pathname === "/" ? "text-primary" : "text-muted-foreground"
+              pathname === "/"
+                ? "text-primary"
+                : "text-muted-foreground"
             }`}
           >
             Home
@@ -120,7 +123,11 @@ export function Header({ isAuthenticated = false, user }: HeaderProps) {
                   </Avatar>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuContent
+                className="w-56"
+                align="end"
+                forceMount
+              >
                 <DropdownMenuLabel className="font-normal">
                   <div className="flex flex-col space-y-1">
                     <p className="text-sm leading-none font-medium">

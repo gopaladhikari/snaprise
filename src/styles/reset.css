@@ -6,7 +6,7 @@ html {
 figure,
 img,
 svg {
-  @apply block max-w-full;
+  @apply max-w-full;
 }
 
 button,

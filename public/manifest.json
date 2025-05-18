@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Snaprise",
+  "short_name": "Snaprise",
+  "description": "Professional photo gallery platform for service professionals",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "oklch(var(--background))",
+  "theme_color": "oklch(var(--primary))",
+  "categories": [
+    "business",
+    "photography",
+    "services",
+    "productivity"
+  ],
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-screenshot.png",
+      "sizes": "1912x919",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Desktop interface"
+    }
+  ],
+  "features": [
+    "Cross-platform Photo Uploads",
+    "Professional Portfolio Builder",
+    "Service Provider Directory"
+  ],
+  "related_applications": [
+    {
+      "platform": "chrome_web_store",
+      "url": "https://snaprise.netlify.app"
+    }
+  ]
+}

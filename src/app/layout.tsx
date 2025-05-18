@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   openGraph: siteConfig.openGraph,
   twitter: siteConfig.twitter,
   metadataBase: siteConfig.metadataBase,
+  icons: siteConfig.icons,
+  manifest: siteConfig.manifest,
+  appleWebApp: siteConfig.appleWebApp,
 };
 
 export const viewport: Viewport = {
