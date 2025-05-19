@@ -2,7 +2,7 @@
 
 import { loginSchema, type LoginSchema } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,24 +15,54 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { firebaseAuth } from "@/config/firebase";
+import { FirebaseError } from "firebase/app";
+import {
+  firebaseErrorCodes,
+  somethingWentWrong,
+  type FirebaseErrorCode,
+} from "@/constants/firebaseErrors";
 
 export function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
+    setValue,
+    setError,
   } = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: LoginSchema) => {
-    console.log("Login data:", data);
-    // Add your login logic here
+  const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
+    try {
+      const res = await signInWithEmailAndPassword(
+        firebaseAuth,
+        data.email,
+        data.password
+      );
+      return res;
+    } catch (error) {
+      if (error instanceof FirebaseError) {
+        if (error.code in firebaseErrorCodes) {
+          setError("root", {
+            type: "manual",
+            message:
+              firebaseErrorCodes[error.code as FirebaseErrorCode],
+          });
+        }
+      } else
+        setError("root", {
+          type: "manual",
+          message: somethingWentWrong,
+        });
+    }
   };
 
   return (
     <Card>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <CardHeader>
           <CardTitle className="text-xl">Welcome back</CardTitle>
           <CardDescription>
@@ -51,7 +81,9 @@ export function LoginForm() {
               {...register("email")}
             />
             {errors.email && (
-              <p className="text-sm text-red-500">{errors.email.message}</p>
+              <p className="text-sm text-red-500">
+                {errors.email.message}
+              </p>
             )}
           </div>
           <div className="grid gap-2">
@@ -78,14 +110,38 @@ export function LoginForm() {
               </p>
             )}
           </div>
+          {errors.root && (
+            <p className="text-sm text-red-500">
+              {errors.root.message}
+            </p>
+          )}
         </CardContent>
-        <CardFooter className="flex flex-col">
-          <Button className="w-full" type="submit">
+        <CardFooter className="mt-4 flex flex-col gap-4">
+          <Button
+            className="w-full"
+            type="submit"
+            isLoading={isSubmitting}
+          >
             Login
+          </Button>
+          <Button
+            className="w-full"
+            type="button"
+            variant="secondary"
+            onClick={() => {
+              setValue("email", "guest@snaprise.com");
+              setValue("password", "guest@snaprise");
+              handleSubmit(onSubmit)();
+            }}
+          >
+            Guest Login
           </Button>
           <p className="text-muted-foreground mt-4 text-center text-sm">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline">
+            <Link
+              href="/register"
+              className="text-primary hover:underline"
+            >
               Sign up
             </Link>
           </p>

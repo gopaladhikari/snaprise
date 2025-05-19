@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { LoginForm } from "./login-form";
+import { loginMeta } from "@/constants/metadata";
 
 export const metadata: Metadata = {
-  title: "Login",
-  description: "Login to your SnapRise account",
+  title: loginMeta.title,
+  description: loginMeta.description,
 };
 
 export default function LoginPage() {

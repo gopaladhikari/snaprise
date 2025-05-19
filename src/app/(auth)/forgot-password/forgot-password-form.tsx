@@ -32,7 +32,7 @@ export function ForgotPasswordForm() {
 
   return (
     <Card>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <CardHeader>
           <CardTitle className="text-xl">Reset Password</CardTitle>
           <CardDescription>
@@ -63,7 +63,10 @@ export function ForgotPasswordForm() {
           </Button>
           <p className="text-muted-foreground mt-4 text-center text-sm">
             Remember your password?{" "}
-            <Link href="/login" className="text-primary hover:underline">
+            <Link
+              href="/login"
+              className="text-primary hover:underline"
+            >
               Back to login
             </Link>
           </p>

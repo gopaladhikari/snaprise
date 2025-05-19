@@ -11,10 +11,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { forgotPasswordMeta } from "@/constants/metadata";
 
 export const metadata: Metadata = {
-  title: "Forgot Password",
-  description: "Reset your SnapRise password",
+  title: forgotPasswordMeta.title,
+  description: forgotPasswordMeta.description,
 };
 
 export default function ForgotPasswordPage() {
@@ -54,7 +55,10 @@ export default function ForgotPasswordPage() {
             </Button>
             <p className="text-muted-foreground mt-4 text-center text-sm">
               Remember your password?{" "}
-              <Link href="/login" className="text-primary hover:underline">
+              <Link
+                href="/login"
+                className="text-primary hover:underline"
+              >
                 Back to login
               </Link>
             </p>

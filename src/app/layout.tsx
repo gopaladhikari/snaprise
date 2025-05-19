@@ -4,6 +4,7 @@ import { poppins, roboto } from "@/config/fonts";
 import { siteConfig } from "@/constants/siteConfig";
 import { Header } from "@/components/partials/header";
 import { Footer } from "@/components/partials/footer";
+import { Toaster } from "sonner";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
@@ -43,6 +44,9 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <div>
+          <Toaster richColors position="bottom-right" />
+        </div>
       </body>
     </html>
   );

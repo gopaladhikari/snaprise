@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { RegisterForm } from "./register-form";
+import { registerMeta } from "@/constants/metadata";
 
 export const metadata: Metadata = {
-  title: "Register",
-  description: "Create a new SnapRise account",
+  title: registerMeta.title,
+  description: registerMeta.description,
 };
 
 export default function RegisterPage() {

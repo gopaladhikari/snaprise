@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Camera, CheckCircle, Search, Star, Users } from "lucide-react";
+import {
+  Camera,
+  CheckCircle,
+  Search,
+  Star,
+  Users,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -27,8 +33,9 @@ export default function Home() {
                   Showcase Your Professional Work
                 </h1>
                 <p className="text-muted text-lg">
-                  Connect with clients through stunning visual portfolios.
-                  Perfect for contractors, cleaners, landscapers, and more.
+                  Connect with clients through stunning visual
+                  portfolios. Perfect for contractors, cleaners,
+                  landscapers, and more.
                 </p>
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <Button size="lg" asChild>
@@ -51,8 +58,8 @@ export default function Home() {
                 Why Choose SnapRise
               </h2>
               <p className="text-muted-foreground mt-4 text-lg">
-                The perfect platform for service professionals to showcase
-                their work
+                The perfect platform for service professionals to
+                showcase their work
               </p>
             </div>
             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -60,30 +67,36 @@ export default function Home() {
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Camera className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Beautiful Galleries</h3>
+                <h3 className="text-xl font-bold">
+                  Beautiful Galleries
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Create stunning visual portfolios that showcase your best
-                  work to potential clients.
+                  Create stunning visual portfolios that showcase your
+                  best work to potential clients.
                 </p>
               </div>
               <div className="bg-card flex flex-col items-center rounded-lg border p-6 text-center">
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Users className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Client Connections</h3>
+                <h3 className="text-xl font-bold">
+                  Client Connections
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Connect directly with potential clients who are looking
-                  for your specific services.
+                  Connect directly with potential clients who are
+                  looking for your specific services.
                 </p>
               </div>
               <div className="bg-card flex flex-col items-center rounded-lg border p-6 text-center">
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Search className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Enhanced Visibility</h3>
+                <h3 className="text-xl font-bold">
+                  Enhanced Visibility
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Get discovered by clients searching for services in your
-                  area with our optimized directory.
+                  Get discovered by clients searching for services in
+                  your area with our optimized directory.
                 </p>
               </div>
             </div>
@@ -121,7 +134,8 @@ export default function Home() {
                 },
                 {
                   title: "Painters",
-                  description: "Present your painting and decorating work",
+                  description:
+                    "Present your painting and decorating work",
                 },
                 {
                   title: "Electricians",
@@ -140,7 +154,9 @@ export default function Home() {
                 >
                   <CheckCircle className="text-primary mt-1 mr-4 h-6 w-6 flex-shrink-0" />
                   <div>
-                    <h3 className="text-xl font-bold">{service.title}</h3>
+                    <h3 className="text-xl font-bold">
+                      {service.title}
+                    </h3>
                     <p className="text-muted-foreground mt-2">
                       {service.description}
                     </p>
@@ -170,10 +186,13 @@ export default function Home() {
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Users className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Create Your Account</h3>
+                <h3 className="text-xl font-bold">
+                  Create Your Account
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Sign up for a free account and complete your professional
-                  profile with your services and contact information.
+                  Sign up for a free account and complete your
+                  professional profile with your services and contact
+                  information.
                 </p>
               </div>
               <div className="relative flex flex-col items-center p-6 text-center">
@@ -183,10 +202,13 @@ export default function Home() {
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Camera className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Upload Your Work</h3>
+                <h3 className="text-xl font-bold">
+                  Upload Your Work
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Create galleries and upload high-quality photos of your
-                  best projects to showcase your skills and expertise.
+                  Create galleries and upload high-quality photos of
+                  your best projects to showcase your skills and
+                  expertise.
                 </p>
               </div>
               <div className="relative flex flex-col items-center p-6 text-center">
@@ -196,10 +218,13 @@ export default function Home() {
                 <div className="bg-primary/10 mb-4 rounded-full p-4">
                   <Star className="text-primary h-8 w-8" />
                 </div>
-                <h3 className="text-xl font-bold">Connect with Clients</h3>
+                <h3 className="text-xl font-bold">
+                  Connect with Clients
+                </h3>
                 <p className="text-muted-foreground mt-2">
-                  Get discovered by potential clients, receive inquiries,
-                  and grow your business through our platform.
+                  Get discovered by potential clients, receive
+                  inquiries, and grow your business through our
+                  platform.
                 </p>
               </div>
             </div>
@@ -214,8 +239,8 @@ export default function Home() {
                 What Our Users Say
               </h2>
               <p className="text-muted-foreground mt-4 text-lg">
-                Hear from professionals who have grown their business with
-                SnapRise
+                Hear from professionals who have grown their business
+                with SnapRise
               </p>
             </div>
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -247,8 +272,8 @@ export default function Home() {
                 </div>
                 <p className="text-muted-foreground">
                   &quot;Since joining SnapRise, I&apos;ve seen a 40%
-                  increase in client inquiries. The platform makes it so
-                  easy to showcase my landscaping projects!&quot;
+                  increase in client inquiries. The platform makes it
+                  so easy to showcase my landscaping projects!&quot;
                 </p>
               </div>
               <div className="bg-card rounded-lg border p-6">
@@ -278,9 +303,10 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground">
-                  &quot;The photo galleries on SnapRise have transformed
-                  how I present my renovation work. Clients can now see my
-                  quality craftsmanship before they even call.&quot;
+                  &quot;The photo galleries on SnapRise have
+                  transformed how I present my renovation work.
+                  Clients can now see my quality craftsmanship before
+                  they even call.&quot;
                 </p>
               </div>
               <div className="bg-card rounded-lg border p-6">
@@ -310,9 +336,9 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="text-muted-foreground">
-                  &quot;As a cleaning professional, before and after photos
-                  are everything. SnapRise gives me the perfect platform to
-                  showcase my transformations.&quot;
+                  &quot;As a cleaning professional, before and after
+                  photos are everything. SnapRise gives me the perfect
+                  platform to showcase my transformations.&quot;
                 </p>
               </div>
             </div>
@@ -329,8 +355,8 @@ export default function Home() {
                     Ready to Showcase Your Work?
                   </h2>
                   <p className="text-primary-foreground/90 text-lg">
-                    Join thousands of professionals who are growing their
-                    business through stunning visual portfolios.
+                    Join thousands of professionals who are growing
+                    their business through stunning visual portfolios.
                   </p>
                   <div className="flex flex-col gap-4 sm:flex-row">
                     <Button size="lg" variant="secondary" asChild>
