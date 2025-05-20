@@ -42,6 +42,7 @@ export function LoginForm() {
         data.email,
         data.password
       );
+      console.log({ res });
       return res;
     } catch (error) {
       if (error instanceof FirebaseError) {

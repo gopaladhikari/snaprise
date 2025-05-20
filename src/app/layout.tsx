@@ -6,6 +6,7 @@ import { Header } from "@/components/partials/header";
 import { Footer } from "@/components/partials/footer";
 import { Toaster } from "sonner";
 import "../styles/globals.css";
+import { UserProvider } from "@/context/user-context";
 
 export const metadata: Metadata = {
   title: {
@@ -41,12 +42,14 @@ export default function RootLayout({
         className={cn(poppins.variable, roboto.variable)}
         suppressHydrationWarning
       >
-        <Header />
-        {children}
-        <Footer />
-        <div>
-          <Toaster richColors position="bottom-right" />
-        </div>
+        <UserProvider>
+          <Header />
+          {children}
+          <Footer />
+          <div>
+            <Toaster richColors position="bottom-right" />
+          </div>
+        </UserProvider>
       </body>
     </html>
   );
