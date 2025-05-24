@@ -121,32 +121,6 @@ export async function updateUserVisibility(
   }
 }
 
-// Reviews
-export async function createReview(
-  userId: string,
-  reviewerId: string,
-  reviewerName: string,
-  rating: number,
-  comment: string
-) {
-  try {
-    const reviewRef = await collection(db, "reviews");
-    const newReview = {
-      userId,
-      reviewerId,
-      reviewerName,
-      rating,
-      comment,
-      createdAt: serverTimestamp(),
-    };
-
-    await reviewRef.add(newReview);
-  } catch (error) {
-    console.error("Error creating review:", error);
-    throw error;
-  }
-}
-
 export async function getUserReviews(userId: string) {
   try {
     const reviewsQuery = query(
