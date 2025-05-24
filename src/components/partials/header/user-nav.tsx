@@ -17,11 +17,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
-import { useContext } from "react";
-import { UserContext } from "@/context/user-context";
+import { useAuth } from "@/hooks/useAuth";
 
 export function UserNav() {
-  const { user } = useContext(UserContext);
+  const { user } = useAuth();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

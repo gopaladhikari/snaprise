@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "@/config/firebase";
+import { auth } from "@/config/firebase";
 import { toast } from "sonner";
 import { FirebaseError } from "firebase/app";
 import {
@@ -49,7 +49,7 @@ export function RegisterForm() {
   const onSubmit = async (data: RegisterSchema) => {
     try {
       await createUserWithEmailAndPassword(
-        firebaseAuth,
+        auth,
         data.email,
         data.password
       );

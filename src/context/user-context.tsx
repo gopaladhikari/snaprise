@@ -1,46 +1,69 @@
 "use client";
 
-import { firebaseAuth } from "@/config/firebase";
-import { onAuthStateChanged, type User } from "firebase/auth";
-import { createContext, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import type { AuthStatus, User } from "@/types";
+import { auth, db } from "@/config/firebase";
 
-type UserContext = {
-  user: User | undefined;
-  setUser: (user: User | undefined) => void;
-  isAuthenticated: boolean;
-};
+interface AuthContextType {
+  user: User | null;
+  status: AuthStatus;
+}
 
-export const UserContext = createContext<UserContext>({
-  user: undefined,
-  setUser: () => {},
-  isAuthenticated: false,
-});
+export const AuthContext = createContext<AuthContextType | undefined>(
+  {
+    status: "loading",
+    user: null,
+  }
+);
 
-export const UserProvider = ({
+export function AuthProvider({
   children,
 }: {
   children: React.ReactNode;
-}) => {
-  const [user, setUser] = useState<User | undefined>(undefined);
+}) {
+  const [user, setUser] = useState<User | null>(null);
+  const [status, setStatus] = useState<AuthStatus>("loading");
 
-  onAuthStateChanged(firebaseAuth, (user) => {
-    console.log(user);
-    if (user) setUser(user);
-    else setUser(undefined);
-  });
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      async (firebaseUser) => {
+        if (firebaseUser) {
+          const userDoc = await getDoc(
+            doc(db, "users", firebaseUser.uid)
+          );
+          if (userDoc.exists()) {
+            setUser({
+              uid: firebaseUser.uid,
+              email: firebaseUser.email!,
+              ...userDoc.data(),
+            } as User);
+          } else {
+            setUser(null);
+          }
+          setStatus("authenticated");
+        } else {
+          setUser(null);
+          setStatus("unauthenticated");
+        }
+      }
+    );
 
-  const value = useMemo(
-    () => ({
+    return () => unsubscribe();
+  }, []);
+
+  const value = useMemo(() => {
+    return {
       user,
-      setUser,
-      isAuthenticated: !!user,
-    }),
-    [user]
-  );
+      status,
+    };
+  }, [user, status]);
 
   return (
-    <UserContext.Provider value={value}>
+    <AuthContext.Provider value={value}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
-};
+}

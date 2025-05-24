@@ -16,15 +16,18 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { firebaseAuth } from "@/config/firebase";
+import { auth } from "@/config/firebase";
 import { FirebaseError } from "firebase/app";
 import {
   firebaseErrorCodes,
   somethingWentWrong,
   type FirebaseErrorCode,
 } from "@/constants/firebaseErrors";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -37,13 +40,12 @@ export function LoginForm() {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
     try {
-      const res = await signInWithEmailAndPassword(
-        firebaseAuth,
+      await signInWithEmailAndPassword(
+        auth,
         data.email,
         data.password
       );
-      console.log({ res });
-      return res;
+      router.push("/dashboard");
     } catch (error) {
       if (error instanceof FirebaseError) {
         if (error.code in firebaseErrorCodes) {

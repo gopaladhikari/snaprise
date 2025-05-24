@@ -98,16 +98,3 @@ export const siteConfig: Metadata = {
     },
   },
 };
-
-export const menus = {
-  main: [
-    {
-      label: "Login",
-      href: "/login",
-    },
-    {
-      label: "Register",
-      href: "/register",
-    },
-  ],
-};

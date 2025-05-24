@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useContext, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Loader2, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "../logo";
-import { UserContext } from "@/context/user-context";
 import { UserNav } from "./user-nav";
+import { useAuth } from "@/hooks/useAuth";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const { isAuthenticated } = useContext(UserContext);
+  const { status } = useAuth();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -26,11 +26,16 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Auth Buttons or User Menu */}
         <div className="flex items-center gap-4">
-          {isAuthenticated ? (
-            <UserNav />
-          ) : (
+          {status === "loading" && (
+            <div className="border-primary size-8 animate-spin rounded-full border-2">
+              <Loader2 className="size-2 animate-spin" />
+            </div>
+          )}
+
+          {status === "authenticated" && <UserNav />}
+
+          {status === "unauthenticated" && (
             <div className="hidden items-center gap-4 md:flex">
               <Button variant="ghost" asChild>
                 <Link href="/login">Login</Link>

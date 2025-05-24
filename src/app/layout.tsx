@@ -5,8 +5,8 @@ import { siteConfig } from "@/constants/siteConfig";
 import { Header } from "@/components/partials/header";
 import { Footer } from "@/components/partials/footer";
 import { Toaster } from "sonner";
+import { AuthProvider } from "@/context/user-context";
 import "../styles/globals.css";
-import { UserProvider } from "@/context/user-context";
 
 export const metadata: Metadata = {
   title: {
@@ -42,14 +42,14 @@ export default function RootLayout({
         className={cn(poppins.variable, roboto.variable)}
         suppressHydrationWarning
       >
-        <UserProvider>
+        <AuthProvider>
           <Header />
           {children}
           <Footer />
           <div>
             <Toaster richColors position="bottom-right" />
           </div>
-        </UserProvider>
+        </AuthProvider>
       </body>
     </html>
   );
