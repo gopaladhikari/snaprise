@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/card";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/config/firebase";
+import { auth, db } from "@/config/firebase";
 import { toast } from "sonner";
 import { FirebaseError } from "firebase/app";
 import {
@@ -27,6 +27,8 @@ import {
   somethingWentWrong,
   type FirebaseErrorCode,
 } from "@/constants/firebaseErrors";
+import { doc, setDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 
 export function RegisterForm() {
   const {
@@ -46,6 +48,8 @@ export function RegisterForm() {
     },
   });
 
+  const router = useRouter();
+
   const onSubmit = async (data: RegisterSchema) => {
     try {
       await createUserWithEmailAndPassword(
@@ -53,7 +57,18 @@ export function RegisterForm() {
         data.email,
         data.password
       );
+
+      await setDoc(doc(db, "users", data.email), {
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        middleName: data.middleName,
+      });
+
+      router.push("/dashboard");
+
       toast.success("Account created successfully");
+
       reset();
     } catch (error) {
       if (error instanceof FirebaseError) {

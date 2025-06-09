@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+export type EnvType = Readonly<typeof env>;
+
 const envSchema = z.object({
   firebaseApiKey: z.string().min(1),
   firebaseAuthDomain: z.string().min(1),
@@ -12,7 +14,7 @@ const envSchema = z.object({
   ikPublicKey: z.string().min(1),
 });
 
-const parsedEnv = envSchema.parse({
+export const env = envSchema.parse({
   firebaseApiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   firebaseAuthDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
   firebaseProjectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -25,5 +27,3 @@ const parsedEnv = envSchema.parse({
   ikEndpoint: process.env.NEXT_PUBLIC_IK_ENDPOINT,
   ikPublicKey: process.env.NEXT_PUBLIC_IK_PUBLIC_KEY,
 });
-
-export const env = parsedEnv as Readonly<typeof parsedEnv>;

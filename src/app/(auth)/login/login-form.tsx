@@ -40,11 +40,13 @@ export function LoginForm() {
 
   const onSubmit: SubmitHandler<LoginSchema> = async (data) => {
     try {
-      await signInWithEmailAndPassword(
+      const credentials = await signInWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
+      console.log({ credentials });
+
       router.push("/dashboard");
     } catch (error) {
       if (error instanceof FirebaseError) {

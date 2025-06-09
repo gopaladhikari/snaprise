@@ -18,9 +18,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
+import { signOut } from "firebase/auth";
+import { auth } from "@/config/firebase";
 
 export function UserNav() {
   const { user } = useAuth();
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -31,10 +38,10 @@ export function UserNav() {
           <Avatar className="h-8 w-8">
             <AvatarImage
               src={user?.photoURL || "/placeholder.svg"}
-              alt={user?.displayName || "User"}
+              alt={user?.firstName || "User"}
             />
             <AvatarFallback>
-              {user?.displayName?.charAt(0)}
+              {user?.firstName?.charAt(0)}
             </AvatarFallback>
           </Avatar>
         </Button>
@@ -43,7 +50,7 @@ export function UserNav() {
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
             <p className="text-sm leading-none font-medium">
-              {user?.displayName}
+              {user?.firstName} {user?.lastName}
             </p>
             <p className="text-muted-foreground text-xs leading-none">
               {user?.email}
@@ -61,7 +68,9 @@ export function UserNav() {
           <Link href="/settings">Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleSignOut}>
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

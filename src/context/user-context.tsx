@@ -32,7 +32,7 @@ export function AuthProvider({
       async (firebaseUser) => {
         if (firebaseUser) {
           const userDoc = await getDoc(
-            doc(db, "users", firebaseUser.uid)
+            doc(db, "users", firebaseUser.email!)
           );
           if (userDoc.exists()) {
             setUser({

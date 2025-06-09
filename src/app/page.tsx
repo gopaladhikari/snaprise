@@ -5,6 +5,7 @@ import {
   CheckCircle,
   Search,
   Star,
+  User,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -247,13 +248,7 @@ export default function Home() {
               <div className="bg-card rounded-lg border p-6">
                 <div className="mb-4 flex items-center">
                   <div className="mr-4">
-                    <Image
-                      src="/placeholder.svg?height=60&width=60"
-                      alt="Testimonial avatar"
-                      width={60}
-                      height={60}
-                      className="rounded-full"
-                    />
+                    <User className="h-8 w-8" />
                   </div>
                   <div>
                     <h4 className="font-bold">Sarah Johnson</h4>
@@ -279,13 +274,7 @@ export default function Home() {
               <div className="bg-card rounded-lg border p-6">
                 <div className="mb-4 flex items-center">
                   <div className="mr-4">
-                    <Image
-                      src="/placeholder.svg?height=60&width=60"
-                      alt="Testimonial avatar"
-                      width={60}
-                      height={60}
-                      className="rounded-full"
-                    />
+                    <User className="h-8 w-8" />
                   </div>
                   <div>
                     <h4 className="font-bold">Michael Rodriguez</h4>
@@ -312,13 +301,7 @@ export default function Home() {
               <div className="bg-card rounded-lg border p-6">
                 <div className="mb-4 flex items-center">
                   <div className="mr-4">
-                    <Image
-                      src="/placeholder.svg?height=60&width=60"
-                      alt="Testimonial avatar"
-                      width={60}
-                      height={60}
-                      className="rounded-full"
-                    />
+                    <User className="h-8 w-8" />
                   </div>
                   <div>
                     <h4 className="font-bold">Emily Chen</h4>

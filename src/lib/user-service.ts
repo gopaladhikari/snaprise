@@ -1,7 +1,6 @@
 import {
   collection,
   doc,
-  getDoc,
   getDocs,
   query,
   where,
@@ -15,21 +14,6 @@ import {
 } from "firebase/firestore";
 import type { Review, User } from "@/types";
 import { db } from "@/config/firebase";
-
-export async function getUserProfile(userId: string) {
-  try {
-    const userDoc = await getDoc(doc(db, "users", userId));
-
-    if (!userDoc.exists()) {
-      throw new Error("User not found");
-    }
-
-    return { uid: userDoc.id, ...userDoc.data() } as User;
-  } catch (error) {
-    console.error("Error getting user profile:", error);
-    throw error;
-  }
-}
 
 export async function getPublicProfiles(
   lastDoc?: QueryDocumentSnapshot<DocumentData>,
